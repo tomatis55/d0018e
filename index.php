@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php
+$cookie_Kundnr = "";
 
-if (isset() == FALSE){
+if (isset($_COOKIE) == FALSE){
   $servername = "utbweb.its.ltu.se";
   $username = "990815";
   $password = "990815";
@@ -16,8 +17,8 @@ if (isset() == FALSE){
   }
   echo "Connected successfully<br>";
 
-  $sql = "SELECT MAX(Kundnr) FROM Kunder";
-  $result = $conn->query($sql);
+  //$sql = "SELECT MAX(Kundnr) FROM Kunder";
+  //$result = $conn->query($sql);
 
 }
 
