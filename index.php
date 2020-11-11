@@ -16,7 +16,7 @@ if (isset() == FALSE){
   }
   echo "Connected successfully<br>";
 
-  $sql = "SELECT * FROM test";
+  $sql = "SELECT MAX(Kundnr) FROM Kunder";
   $result = $conn->query($sql);
 
 }
