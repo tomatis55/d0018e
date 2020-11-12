@@ -62,28 +62,28 @@ echo "Connected successfully<br>";
   <div class="w3-container" id="jeans">
     <p>8 items</p>
   </div>
-
+<table>
   <!-- Product grid -->
   <?php
   
     $sql = "SELECT * FROM Produkter";
     $result = $conn->query($sql);
-/*
+
     while($row = $result->fetch_assoc()){?>
       <tr>
         <td> <?php echo $row["Produktnamn"]?> </td>
         <td> <?php echo $row["Beskrivning"]?> </td>
         <td> <?php echo $row["Pris"]?> </td>
         <td> <?php echo $row["AvrRating"]?> </td>
-        <td> <img src="<?php echo $row["ImgUrl"]?>"> </td>
+        <td> <img src="<?php echo $row['imgurl']?>"> </td>
     </tr>
 
     <?php
-    }*/
+    }
     $conn->close();
 
   ?>
-
+</table>
 
 </div>
 
