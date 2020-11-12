@@ -18,11 +18,11 @@
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-top" style="z-index:3;width:250px; background-color:peru" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16" style="font-weight:bold;background-color:peru">
     <h3 class="w3-wide">
-    	<b><a href="index.html" target="_self" class="w3-bar-item w3-button">ROCKS & GUNS</a>
+    	<b><a href="index.php" target="_self" class="w3-bar-item w3-button">ROCKS & GUNS</a>
     </h3>
   </div>
   <div class="w3-padding-64 w3-large" style="font-weight:bold;background-color:peru">
-    <a href="rocks.html" target="_self" class="w3-bar-item w3-button">Rocks</a>
+    <a href="rocks.php" target="_self" class="w3-bar-item w3-button">Rocks</a>
     <a href="https://www.google.com/search?q=guns&tbm=isch&ved=2ahUKEwjO_trSyvXsAhXPBXcKHSeHAngQ2-cCegQIABAA&oq=guns&gs_lcp=CgNpbWcQAzIFCAAQsQMyBQgAELEDMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgjECc6BAgAEEM6BwgAELEDEENQyiZY2ypgoC1oAHAAeACAAVOIAaUCkgEBNJgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=IUapX47qBs-L3AOnjorABw&bih=728&biw=1411" target="_blank" class="w3-bar-item w3-button">Guns</a>
    </div>
 </nav>

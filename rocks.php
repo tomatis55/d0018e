@@ -18,7 +18,7 @@ echo "Connected successfully<br>";
 ?>
 
 <html>
-<title>W3.CSS Template</title>
+<title>ROCKS&GUNS</title>
 <meta charset="UTF-8">
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -29,6 +29,7 @@ echo "Connected successfully<br>";
   body{background-color:#228B22}
   .w3-sidebar a{ font-family: "Roboto"}
   h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
+  th, td {padding: 15px;}
   </style>
 <body class="w3-content" style="max-width:1200px" >
 
@@ -36,12 +37,12 @@ echo "Connected successfully<br>";
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-top" style="z-index:3;width:250px; background-color:peru" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16" style="font-weight:bold;background-color:peru">
     <h3 class="w3-wide">
-    	<b><a href="index.html" target="_self" class="w3-bar-item w3-button">ROCKS & GUNS</a>
+    	<b><a href="index.php" target="_self" class="w3-bar-item w3-button">ROCKS & GUNS</a>
     </h3>
   </div>
   <div class="w3-padding-64 w3-large" style="font-weight:bold;background-color:peru">
     <a href="https://www.google.com/search?q=rocks&sxsrf=ALeKk02CCiTNfyj9Pb2nFmnbUhHib7Ba6Q:1604929023005&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj_8LjCyvXsAhVumIsKHQn7BDEQ_AUoAXoECBIQAw&biw=1411&bih=728&dpr=1.82" target="_blank" class="w3-bar-item w3-button">Rocks</a>
-    <a href="guns.html" target="_self" class="w3-bar-item w3-button">Guns</a>
+    <a href="guns.php" target="_self" class="w3-bar-item w3-button">Guns</a>
   </div>
 </nav>
 
@@ -59,25 +60,32 @@ echo "Connected successfully<br>";
     </p>
   </header>
 
-  <div class="w3-container" id="jeans">
-    <p>8 items</p>
-  </div>
 <table>
+<tr>
+  <tH>PRODUKTNAMN</th>
+
+  <tH>BESKRIVNING</th>
+  <tH>PRIS</th>
+  <th>BETYG</th>
+  <th>BILD</th>
+</tr>
+
+
   <!-- Product grid -->
   <?php
   
-    $sql = "SELECT * FROM Produkter";
+    $sql = "SELECT * FROM Produkt";
     $result = $conn->query($sql);
-
-    while($row = $result->fetch_assoc()){?>
+    while($row = $result->fetch_assoc()) { ?>
+    
       <tr>
         <td> <?php echo $row["Produktnamn"]?> </td>
         <td> <?php echo $row["Beskrivning"]?> </td>
         <td> <?php echo $row["Pris"]?> </td>
         <td> <?php echo $row["AvrRating"]?> </td>
-        <td> <img src="<?php echo $row['imgurl']?>"> </td>
+        <td> <img src="<?php echo $row['imgurl']?>" style='width:200px;height:150px'> </td>
     </tr>
-
+    
     <?php
     }
     $conn->close();

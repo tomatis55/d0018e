@@ -25,7 +25,7 @@ if (isset($_COOKIE) == FALSE){
 ?>
 
 <html>
-<title>W3.CSS Template</title>
+<title>ROCKS&GUNS</title>
 <meta charset="UTF-8">
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -47,8 +47,8 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
     </h3>
   </div>
   <div class="w3-padding-64 w3-large" style="font-weight:bold;background-color:peru">
-    <a href="rocks.html" target="_self" class="w3-bar-item w3-button">Rocks</a>
-    <a href="guns.html" target="_self" class="w3-bar-item w3-button">Guns</a>
+    <a href="rocks.php" target="_self" class="w3-bar-item w3-button">Rocks</a>
+    <a href="guns.php" target="_self" class="w3-bar-item w3-button">Guns</a>
     
   </div>
 </nav>
