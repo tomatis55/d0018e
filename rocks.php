@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+
 $servername = "utbweb.its.ltu.se";
 $username = "990815";
 $password = "990815";
@@ -13,6 +14,7 @@ if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 echo "Connected successfully<br>";
+
 ?>
 
 <html>
@@ -43,21 +45,9 @@ echo "Connected successfully<br>";
   </div>
 </nav>
 
-<!-- Top menu on small screens 
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-  <div class="w3-bar-item w3-padding-24 w3-wide">LOGO</div>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
-
-<!-- Overlay effect when opening sidebar on small screens 
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px" >
 
-  <!-- Push down content on small screens
-  <div class="w3-hide-large" style="margin-top:83px"></div>
-  
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-left">Rocks</p>
@@ -69,26 +59,16 @@ echo "Connected successfully<br>";
     </p>
   </header>
 
-  <!-- Image header -->
-<!--div class="w3-display-container w3-container">
-    <img src="/w3images/jeans.jpg" alt="Jeans" style="width:100%">
-    <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
-      <h1 class="w3-jumbo w3-hide-small">New arrivals</h1>
-      <h1 class="w3-hide-large w3-hide-medium">New arrivals</h1>
-      <h1 class="w3-hide-small">COLLECTION 2016</h1>
-      <p><a href="#jeans" class="w3-button w3-black w3-padding-large w3-large">SHOP NOW</a></p>
-    </div>
-  </div>-->
-
   <div class="w3-container" id="jeans">
     <p>8 items</p>
   </div>
 
   <!-- Product grid -->
   <?php
+  
     $sql = "SELECT * FROM Produkter";
     $result = $conn->query($sql);
-
+/*
     while($row = $result->fetch_assoc()){?>
       <tr>
         <td> <?php echo $row["Produktnamn"]?> </td>
@@ -96,15 +76,15 @@ echo "Connected successfully<br>";
         <td> <?php echo $row["Pris"]?> </td>
         <td> <?php echo $row["AvrRating"]?> </td>
         <td> <img src="<?php echo $row["ImgUrl"]?>"> </td>
+    </tr>
 
-
-
-    }
-
+    <?php
+    }*/
+    $conn->close();
 
   ?>
 
- 
+
 </div>
 
 </body>
