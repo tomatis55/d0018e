@@ -1,31 +1,19 @@
-<!DOCTYPE html>
+<?php
+$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+?>
 <html>
 <body>
+
 <?php
-
-$servername = "utbweb.its.ltu.se";
-$username = "991205";
-$password = "123456";
-$dbname = "db991205";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if(!isset($_COOKIE[$cookie_name])) {
+  echo "Cookie named '" . $cookie_name . "' is not set!";
+} else {
+  echo "Cookie '" . $cookie_name . "' is set!<br>";
+  echo "Value is: " . $_COOKIE[$cookie_name];
 }
-echo "Connected successfully <br>";
-
-
-
-$sql = "SELECT Längd FROM test1 WHERE Namn='Oskar'";
-$result = $conn->query($sql);
-$x = $result->fetch_assoc();
-echo "Oskars längd: " .$x["Längd"];
-
-
-$conn->close();
 ?>
+
 </body>
 </html>
