@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <?php
-$cookie_Kundnr = "";
 
-if (isset($_COOKIE) == FALSE){
-  $servername = "utbweb.its.ltu.se";
-  $username = "990815";
-  $password = "990815";
-  $dbname = "db990815";
-
-  // Create connection
+if(!isset($_COOKIE['user'])){
+    $servername = "utbweb.its.ltu.se";
+    $username = "990815";
+    $password = "990815";
+    $dbname = "db990815";
+    // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
 
-  // Check connection
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
-  echo "Connected successfully<br>";
+    $sql = "SELECT * FROM Kunder ORDER BY Kundnr DESC LIMIT 1";
+    $result = $conn->query($sql);
+    $x = $result->fetch_assoc();
 
-  //$sql = "SELECT MAX(Kundnr) FROM Kunder";
-  //$result = $conn->query($sql);
+
+    $cookie_name = "user";
+    $cookie_value = $x[Kundnr];
+    setcookie($cookie_name, $cookie_value, time() + (86400*30), "/"); // 86400 = 1 day
+
+    $sql = "INSERT INTO `Kunder`() VALUES ()";
+    $result = $conn->query($sql);
+        
+    $conn->close();
 
 }
+
 
 ?>
 
@@ -60,7 +68,7 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
   <!-- Top header -->
   <header class="w3-container">
    <p class="w3-right">
-     <a href="basket.html">
+     <a href="varukorg.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
     </a>
       <i class="fa fa-search w3-xlarge"></i>
