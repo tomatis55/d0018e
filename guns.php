@@ -28,6 +28,7 @@ if (!$conn) {
   body{background-color:#228B22}
   .w3-sidebar a{ font-family: "Roboto"}
   h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
+  th, td {padding: 15px;}
   </style>
 <body class="w3-content" style="max-width:1200px" >
 
