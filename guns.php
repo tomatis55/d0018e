@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+<?php
+
+$servername = "utbweb.its.ltu.se";
+$username = "990815";
+$password = "990815";
+$dbname = "db990815";
+
+// Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+?>
+
 <html>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -64,63 +81,38 @@
     </div>
   </div>-->
 
-  <div class="w3-container" id="jeans">
-    <p>8 items</p>
-  </div>
+<table>
+<tr>
+  <tH>PRODUKTNAMN</th>
+
+  <tH>BESKRIVNING</th>
+  <tH>PRIS</th>
+  <th>BETYG</th>
+  <th>BILD</th>
+</tr>
+
 
   <!-- Product grid -->
-  <div class="w3-row">
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="/w3images/jeans1.jpg" style="width:100%">
-        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
-      </div>
-      <div class="w3-container">
-        <img src="/w3images/jeans2.jpg" style="width:100%">
-        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
-      </div>
-    </div>
+  <?php
+  
+    $sql = "SELECT * FROM `Produkt` WHERE Produkt.Kategori='gun'";
+    $result = $conn->query($sql);
+    while($row = $result->fetch_assoc()) { ?>
+    
+      <tr>
+        <td> <?php echo $row["Produktnamn"]?> </td>
+        <td> <?php echo $row["Beskrivning"]?> </td>
+        <td> <?php echo $row["Pris"]?> </td>
+        <td> <?php echo $row["AvrRating"]?> </td>
+        <td> <img src="<?php echo $row['imgurl']?>" style='width:200px;height:150px'> </td>
+    </tr>
+    
+    <?php
+    }
+    $conn->close();
 
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <div class="w3-display-container">
-          <img src="/w3images/jeans2.jpg" style="width:100%">
-          <span class="w3-tag w3-display-topleft">New</span>
-        </div>
-        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
-      </div>
-      <div class="w3-container">
-        <img src="/w3images/jeans3.jpg" style="width:100%">
-        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
-      </div>
-    </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="/w3images/jeans3.jpg" style="width:100%">
-        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
-      </div>
-      <div class="w3-container">
-        <div class="w3-display-container">
-          <img src="/w3images/jeans4.jpg" style="width:100%">
-          <span class="w3-tag w3-display-topleft">Sale</span>
-        </div>
-        <p>Vintage Skinny Jeans<br><b class="w3-text-red">$14.99</b></p>
-      </div>
-    </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="/w3images/jeans4.jpg" style="width:100%">
-        <p>Vintage Skinny Jeans<br><b>$14.99</b></p>
-      </div>
-      <div class="w3-container">
-        <img src="/w3images/jeans1.jpg" style="width:100%">
-        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
-      </div>
-    </div>
-  </div>
-
+  ?>
+</table>
  
 </div>
 

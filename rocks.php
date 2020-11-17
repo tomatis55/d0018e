@@ -13,7 +13,6 @@ $dbname = "db990815";
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully<br>";
 
 ?>
 
@@ -74,7 +73,7 @@ echo "Connected successfully<br>";
   <!-- Product grid -->
   <?php
   
-    $sql = "SELECT * FROM Produkt";
+    $sql = "SELECT * FROM `Produkt` WHERE Produkt.Kategori='rock'";
     $result = $conn->query($sql);
     while($row = $result->fetch_assoc()) { ?>
     
