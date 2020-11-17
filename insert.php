@@ -83,5 +83,5 @@ if($conn->query($sql)){
  
 // Close connection
 $conn->close();
-//header("Location:/admin.php")
+header("Location:/admin.php")
 ?>
