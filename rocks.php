@@ -53,7 +53,7 @@ echo "Connected successfully<br>";
   <header class="w3-container w3-xlarge">
     <p class="w3-left">Rocks</p>
     <p class="w3-right">
-    <a href="basket.html">
+    <a href="varukorg.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
     </a>
       <i class="fa fa-search"></i>
