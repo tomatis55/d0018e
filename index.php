@@ -29,7 +29,6 @@ if(!isset($_COOKIE['user'])){
 
 }
 
-
 ?>
 
 <html>
@@ -75,13 +74,11 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
     </p>
   
   <div class="w3-margin-top">
- 	<form action="action_page.php" method="post">
-		<label for="uname"><b>Username</b></label>
+ 	<form action="login.php" method="post">
+		  <label for="uname"><b>Username</b></label>
     	<input type="text" placeholder="Enter Username" name="uname" required>
-
     	<label for="psw"><b>Password</b></label>
     	<input type="password" placeholder="Enter Password" name="psw" required>
-
     	<button type="submit">Login</button>
 	</form> 
    
