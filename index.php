@@ -20,7 +20,7 @@ if(!isset($_COOKIE['user'])){
 
     $cookie_name = "user";
     $cookie_value = $x[Kundnr];
-    setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
+    setcookie($cookie_name, $cookie_value, time() + (86400*30), "/"); // 86400 = 1 day
 
     $sql = "INSERT INTO `Kunder`() VALUES ()";
     $result = $conn->query($sql);
