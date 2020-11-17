@@ -48,7 +48,7 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
 </div>
 
 <div class="w3-display-container w3-container">
- 	<form action="/insert.php" method="post" style="margin-left:250px">
+ 	<form action="/insert.php" method="post" style="margin-left:250px" enctype="multipart/form-data">
      <label for="name">Product name:</label><br>
       <input type="text" id="name" name="name"><br>
   
@@ -62,11 +62,11 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
       <select id="category" name="category">
           <option value="rock">Rock</option>
           <option value="gun">Gun</option></select><br><br>
-      <!--
+      
       <label for="Image">Image:</label>
       <input type="file" accept="image/*" name="fileToUpload" id="fileToUpload"><br><br>
-      -->
-    	<button type="submit" target="_self">Submit</button>
+      
+    	<button type="submit">Submit</button>
 	</form> 
 
 
