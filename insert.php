@@ -66,14 +66,15 @@ if ($uploadOk == 0) {
     }
   }
 
-// insert into database
+// insert product into database
 $name = $_POST['name'];
 $price = $_POST['price'];
 $category = $_POST['category'];
 $description = $_POST['description'];
 
 // Attempt insert query execution
-$sql = "INSERT INTO `Produkt`(`Produktnamn`, `Pris`, `Kategori`, `Beskrivning`, `AvrRating`, `imgurl`) VALUES ('$name', '$price', '$category', '$description' ,'5', '$target_file')";
+$sql = "INSERT INTO `Produkt`(`Produktnamn`, `Pris`, `Kategori`, `Beskrivning`, `AvrRating`, `imgurl`) 
+        VALUES ('$name', '$price', '$category', '$description' ,'5', '$target_file')";
 
 if($conn->query($sql)){
     echo "Records added successfully.";
