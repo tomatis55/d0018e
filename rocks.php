@@ -78,7 +78,6 @@ if (!$conn) {
 <table>
 <tr>
   <tH>PRODUKTNAMN</th>
-
   <tH>BESKRIVNING</th>
   <tH>PRIS</th>
   <th>BETYG</th>
@@ -99,6 +98,7 @@ if (!$conn) {
         <td> <?php echo $row["Pris"]?> </td>
         <td> <?php echo $row["AvrRating"]?> </td>
         <td> <img src="<?php echo $row['imgurl']?>" style='width:200px;height:150px'> </td>
+        <td> <button onclick="document.location='additem.php?pnr=<?php echo $row['Produktnr']?>'"> Add to cart</button></td>
     </tr>
     
     <?php
