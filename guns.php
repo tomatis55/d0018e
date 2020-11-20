@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <?php
 
+if($_COOKIE["user"] == '0'){?>
+  <style>
+    body{background-color:#659DBD}
+
+  </style>
+<?php
+}else{?>
+  <style>
+    body{background-color:#228B22}
+  </style>
+<?php
+}
+?>
+<?php
+
 $servername = "utbweb.its.ltu.se";
 $username = "990815";
 $password = "990815";
@@ -25,7 +40,6 @@ if (!$conn) {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-  body{background-color:#228B22}
   .w3-sidebar a{ font-family: "Roboto"}
   h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
   th, td {padding: 15px;}
