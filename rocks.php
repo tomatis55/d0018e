@@ -49,15 +49,23 @@ if (!$conn) {
 <body class="w3-content" style="max-width:1200px" >
 
 <!--Sidebar/menu-->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-top" style="z-index:3;width:250px; background-color:peru" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-top" style="z-index:0;width:250px; background-color:peru" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16" style="font-weight:bold;background-color:peru">
     <h3 class="w3-wide">
     	<b><a href="index.php" target="_self" class="w3-bar-item w3-button">ROCKS & GUNS</a>
     </h3>
   </div>
-  <div class="w3-padding-64 w3-large" style="font-weight:bold;background-color:peru">
+  <div class="w3-padding-64 w3-large" style="background-color:peru">
     <a href="https://www.google.com/search?q=rocks&sxsrf=ALeKk02CCiTNfyj9Pb2nFmnbUhHib7Ba6Q:1604929023005&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj_8LjCyvXsAhVumIsKHQn7BDEQ_AUoAXoECBIQAw&biw=1411&bih=728&dpr=1.82" target="_blank" class="w3-bar-item w3-button">Rocks</a>
     <a href="guns.php" target="_self" class="w3-bar-item w3-button">Guns</a>
+    <?php
+      if ($_COOKIE['user'] == '0'){?>
+        <a href="admin.php" target="_self" class="w3-bar-item w3-button">Admin</a>
+
+    
+    <?php    
+      }
+    ?>
   </div>
 </nav>
 

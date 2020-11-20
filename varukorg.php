@@ -56,6 +56,14 @@ if (!$conn) {
   <div class="w3-padding-64 w3-large" style="font-weight:bold;background-color:peru">
     <a href="https://www.google.com/search?q=rocks&sxsrf=ALeKk02CCiTNfyj9Pb2nFmnbUhHib7Ba6Q:1604929023005&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj_8LjCyvXsAhVumIsKHQn7BDEQ_AUoAXoECBIQAw&biw=1411&bih=728&dpr=1.82" target="_blank" class="w3-bar-item w3-button">Rocks</a>
     <a href="guns.php" target="_self" class="w3-bar-item w3-button">Guns</a>
+    <?php
+      if ($_COOKIE['user'] == '0'){?>
+        <a href="admin.php" target="_self" class="w3-bar-item w3-button">Admin</a>
+
+    
+    <?php    
+      }
+    ?>
   </div>
 </nav>
 
