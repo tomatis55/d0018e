@@ -31,16 +31,25 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
   <div class="w3-padding-64 w3-large" style="font-weight:bold;background-color:peru">
     <a href="rocks.php" target="_self" class="w3-bar-item w3-button">Rocks</a>
     <a href="guns.php" target="_self" class="w3-bar-item w3-button">Guns</a>
+    <?php
+      if ($_COOKIE['user'] == '0'){?>
+        <a href="admin.php" target="_self" class="w3-bar-item w3-button">Admin</a>
+
+    
+    <?php    
+      }
+    ?>
     
   </div>
 </nav>
 
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:250px">
+<div class="w3-main w3-container w3-display-container" style="margin-left:250px">
   
   <!-- Top header -->
-  <header class="w3-container">
+  <header class="w3-container w3-xlarge">
+  <p class="w3-left">Admin</p>
    <p class="w3-right">
      <a href="varukorg.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
@@ -53,7 +62,8 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
   </header>
 
 
-  <div class="w3-container" style ="margin-top:100px">
+  <div class ="w3-display-left" style="margin-left:100px;margin-top:400px">
+  <h1> Add product</h1>
     <form action="/insert.php" method="post" enctype="multipart/form-data">
       <label for="name">Product name:</label><br>
         <input type="text" id="name" name="name"><br>
@@ -78,9 +88,22 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
     
     </div>
 
-    <div class="w3-container">
+  <div class="w3-display-right" style ="margin-left:100px;margin-top:300px">
+  <h1> Remove product</h1>
+    <form action="/insert.php" method="post" enctype="multipart/form-data">
+      <label for="name">Product id:</label><br>
+        <input type="text" id="name" name="name"><br>     
+        <button type="submit">Submit</button>
+
+    </form> 
     
-      <form action="/logout.php" method="post" style = "margin-top:300px" enctype="multipart/form-data">
+    </div>
+
+
+
+    <div class="w3-display-left ">
+    
+      <form action="/logout.php" method="post" style = "margin-top:1700px;margin-left:100px" enctype="multipart/form-data">
       <button type="submit">Logout</button>
     </form>
     </div>
