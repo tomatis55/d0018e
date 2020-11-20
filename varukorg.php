@@ -105,6 +105,8 @@ if (!$conn) {
         <td> <?php echo $row["Pris"]?> </td>
         <td> <?php echo $row["AvrRating"]?> </td>
         <td> <img src="<?php echo $row['imgurl']?>" style='width:200px;height:150px'> </td>
+        <!-- REMOVE FROM CART -->
+        <td> <button onclick="document.location='removeFromCart.php?pnr=<?php echo $row['Produktnr']?>'"> Remove from cart</button></td>
     </tr>
     
     <?php
