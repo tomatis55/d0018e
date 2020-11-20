@@ -88,26 +88,11 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
     
     </div>
 
-  <div class="w3-display-right" style ="margin-left:100px;margin-top:400px">
+  <div class="w3-display-right" style ="margin-left:100px;margin-top:300px">
   <h1> Remove product</h1>
     <form action="/insert.php" method="post" enctype="multipart/form-data">
-      <label for="name">Product name:</label><br>
-        <input type="text" id="name" name="name"><br>
-    
-        <label for="price">Price:</label><br>
-        <input type="number" id="price" name="price"><br>
-    
-        <label for="description">Description:</label><br>
-        <input type="text" id="description" name="description"><br><br>
-
-        <label for="Category">Category:</label>
-        <select id="category" name="category">
-            <option value="rock">Rock</option>
-            <option value="gun">Gun</option></select><br><br>
-        
-        <label for="Image">Image:</label>
-        <input type="file" accept="image/*" name="fileToUpload" id="fileToUpload"><br><br>
-        
+      <label for="name">Product id:</label><br>
+        <input type="text" id="name" name="name"><br>     
         <button type="submit">Submit</button>
 
     </form> 
@@ -116,9 +101,9 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
 
 
 
-    <div class="w3-display-position">
+    <div class="w3-display-left ">
     
-      <form action="/logout.php" method="post" style = "margin-top:100px" enctype="multipart/form-data">
+      <form action="/logout.php" method="post" style = "margin-top:1700px;margin-left:100px" enctype="multipart/form-data">
       <button type="submit">Logout</button>
     </form>
     </div>
