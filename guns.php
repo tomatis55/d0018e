@@ -121,6 +121,14 @@ if (!$conn) {
         <td> <?php echo $row["AvrRating"]?> </td>
         <td> <img src="<?php echo $row['imgurl']?>" style='width:200px;height:150px'> </td>
         <td> <button onclick="document.location='additem.php?pnr=<?php echo $row['Produktnr']?>'"> Add to cart</button></td>
+
+        <!-- REMOVE PRODUCT BUTTON FOR ADMIN ONLY!!-->
+        <?php
+          if($_COOKIE["user"] == '0'){?>
+            <td> <button onclick="document.location='removeitem.php?pnr=<?php echo $row['Produktnr']?>'" style= "background-color:#cc0000"> REMOVE PRODUCT</button></td>
+          <?php
+          }?>
+
     </tr>
     
     <?php
