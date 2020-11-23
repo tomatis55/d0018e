@@ -63,7 +63,7 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
 
 
   <div class ="w3-display-left" style="margin-left:100px;margin-top:400px">
-  <h1> Add product</h1>
+    <h1> Add product</h1>
     <form action="/insert.php" method="post" enctype="multipart/form-data">
       <label for="name">Product name:</label><br>
         <input type="text" id="name" name="name"><br>
@@ -90,20 +90,19 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
 
   <div class="w3-display-right" style ="margin-left:100px;margin-top:300px">
   <h1> Remove product</h1>
-    <form action="/insert.php" method="post" enctype="multipart/form-data">
+    <form action="/removeitem.php?id=admin" method="post" enctype="multipart/form-data">
       <label for="name">Product id:</label><br>
-        <input type="text" id="name" name="name"><br>     
+        <input type="text" name="produktnr"><br>     
         <button type="submit">Submit</button>
 
     </form> 
     
     </div>
 
-
-
-    <div class="w3-display-left ">
+    <!--WTF -->
+    <div style="height:0px;width:0px"class="w3-display-left w3-green">
     
-      <form action="/logout.php" method="post" style = "margin-top:1700px;margin-left:100px" enctype="multipart/form-data">
+      <form action="/logout.php" method="post" style = "margin-top:800px;margin-left:100px" enctype="multipart/form-data">
       <button type="submit">Logout</button>
     </form>
     </div>
