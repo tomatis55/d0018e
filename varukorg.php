@@ -201,7 +201,7 @@ span.price {
     while($row = $result->fetch_assoc()) { ?>
     
       <tr>
-        <td> <?php echo $row["Produktnamn"]?> </td>
+        <td> <a href="product.php?pnr=<?php echo $row['Produktnr']?>"> <?php echo $row["Produktnamn"]?> </a> </td>
         <td> <?php echo $row["Beskrivning"]?> </td>
         <td> <?php echo $row["Pris"]?> </td>
         <td> <?php echo $row["AvrRating"]?> </td>
