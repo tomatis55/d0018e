@@ -74,7 +74,7 @@ $category = $_POST['category'];
 $description = $_POST['description'];
 
 // Attempt insert query execution
-$sql = "INSERT INTO `Produkt`(`Produktnamn`, `Pris`, `Kategori`, `Beskrivning`, `AvrRating`, `imgurl`, 'Antal') 
+$sql = "INSERT INTO `Produkt`(`Produktnamn`, `Pris`, `Kategori`, `Beskrivning`, `AvrRating`, `imgurl`, `Antal`) 
         VALUES ('$name', '$price', '$category', '$description' ,'5', '$target_file', '$stock')";
 
 if($conn->query($sql)){

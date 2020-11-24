@@ -115,8 +115,8 @@ td,tr,a,p{font-family: "Montserrat", sans-serif}
     <h2 style="text-align:center"> <?php echo $row['Produktnamn']?> </h2>
     <table style="margin-left: auto; margin-right: auto">
       <tr>
-        <td>Price: <?php echo $row['Pris'] ?> kr</td>
-        <td>Stock: <?php echo $row['Antal']?></td>
+        <td>Price: <?php echo $row['Pris'] ?> kr &nbsp&nbsp&nbsp&nbsp    </td>
+        <td>Stock: <?php echo $row['Antal']?>   &nbsp&nbsp&nbsp&nbsp  </td>
         <td>Average Rating: <?php echo $row['AvrRating']?>/5*&nbsp;</td>
       </tr>
     </table>

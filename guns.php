@@ -106,12 +106,11 @@ if (!$conn) {
 
 <table>
 <tr>
-  <tH>PRODUKTNAMN</th>
-
-  <tH>BESKRIVNING</th>
-  <tH>PRIS</th>
-  <th>BETYG</th>
-  <th>BILD</th>
+  <tH>Product</th>
+  <tH>Price</th>
+  <tH>Stock</th>
+  <th>Rating</th>
+  <th>Picture</th>
 </tr>
 
 
@@ -124,9 +123,9 @@ if (!$conn) {
     
       <tr>
         <td> <a href="product.php?pnr=<?php echo $row['Produktnr']?>"> <?php echo $row["Produktnamn"]?> </a> </td>
-        <td> <?php echo $row["Beskrivning"]?> </td>
-        <td> <?php echo $row["Pris"]?> </td>
-        <td> <?php echo $row["AvrRating"]?> </td>
+        <td> <?php echo $row["Pris"]?> kr </td>
+        <td> <?php echo $row["Antal"]?> </td>
+        <td> <?php echo $row["AvrRating"]?>/5* </td>
         <td> <img src="<?php echo $row['imgurl']?>" style='width:200px;height:150px'> </td>
         <td> <button onclick="document.location='addToCart.php?pnr=<?php echo $row['Produktnr']?>'"> Add to cart</button></td>
 
