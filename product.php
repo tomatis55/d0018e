@@ -111,7 +111,7 @@ td,tr,a,p{font-family: "Montserrat", sans-serif}
   ?>
 <div style="padding:25px"> 
 
- <img style="float: right; width:300px;height:225px" src="<?php echo $row['imgurl']?>">
+ <img style="float: right; width:350px;height:262px" src="<?php echo $row['imgurl']?>">
     <h2 style="text-align:center"> <?php echo $row['Produktnamn']?> </h2>
     <table style="margin-left: auto; margin-right: auto">
       <tr>
@@ -120,7 +120,7 @@ td,tr,a,p{font-family: "Montserrat", sans-serif}
         <td>Average Rating: <?php echo $row['AvrRating']?>/5*&nbsp;</td>
       </tr>
     </table>
-    <p><?php echo $row['Beskrivning']?></p>
+    <p style="height:150px"><?php echo $row['Beskrivning']?></p>
     <table>
       <tr>
         <td style="width: 300px;"><strong>Comment</strong></td>
