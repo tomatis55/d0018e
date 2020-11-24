@@ -109,6 +109,30 @@ if (!$conn) {
     
     <?php
     }
+  ?>
+
+
+
+</table>
+<!-- räkna ut summa och antal-->
+<?php
+      $sql = "SELECT SUM(Produkt.Pris) as Summa, COUNT(*) as Antal FROM Varukorg, Produkt WHERE Varukorg.Kundnr = '$k' AND Varukorg.Produktnr = Produkt.Produktnr";
+      $result = $conn->query($sql);
+      $row = $result->fetch_assoc();
+      $sum = $row['Summa'];
+      $count = $row['Antal']
+    ?>
+
+    <table style=width:100%>
+    <tr>
+      <td> Number of Products: </td>
+      <td> <?php echo $count?> </td>
+      <td> Total Price: </td>
+      <td> <?php echo $sum?> kr</td>
+    </tr>
+
+
+    <?php
     $conn->close();
 
   ?>

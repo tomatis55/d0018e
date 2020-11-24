@@ -70,6 +70,9 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
     
         <label for="price">Price:</label><br>
         <input type="number" id="price" name="price"><br>
+
+        <label for="Stock">Stock:</label><br>
+        <input type="number" id="stock" name="stock"><br>
     
         <label for="description">Description:</label><br>
         <input type="text" id="description" name="description"><br><br>
