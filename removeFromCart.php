@@ -19,7 +19,7 @@
     
 $user = $_COOKIE['user'];
 $productnr = $_GET['pnr'];
-//$sql = "INSERT INTO Varukorg (kundnr, produktnr) VALUES ('$user', '$productnr')";
+
 $sql = "DELETE FROM `Varukorg` WHERE kundnr= $user AND Produktnr = $productnr LIMIT 1";
 
 if ($conn->query($sql) === TRUE) {

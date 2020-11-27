@@ -44,25 +44,6 @@ if($_GET['id']=='admin'){
 
 
 
-/*
-if($_POST[id]=='admin'){
-    header("Location:/admin.php"); 
-}elseif($x[Kategori]=='rocks'){
-    header("Location:/rocks.php"); 
-
-}else{
-    header("Location:/guns.php");
-}
-*/
-/*
-if($x[Kategori]=='rocks'){
-    header("Location:/rocks.php"); 
-
-}else{
-    header("Location:/guns.php");
-}
-
-*/
 ?>
 
 
