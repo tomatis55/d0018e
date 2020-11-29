@@ -98,8 +98,8 @@ td,tr,a,p{font-family: "Montserrat", sans-serif}
     <h2 style="text-align:center"> <?php echo $row['Produktnamn']?> </h2>
     <table style="margin-left: auto; margin-right: auto">
       <tr>
-        <td>Price: <?php echo $row['Pris'] ?> kr &nbsp&nbsp&nbsp&nbsp    </td>
-        <td>Stock: <?php echo $row['Antal']?>   &nbsp&nbsp&nbsp&nbsp  </td>
+        <td>Price: <?php echo $row['Pris'] ?> kr &nbsp&nbsp&nbsp&nbsp </td>
+        <td>Stock: <?php echo $row['Antal']?>    &nbsp&nbsp&nbsp&nbsp </td>
         <td>Average Rating: <?php echo $row['AvrRating']?>/5*&nbsp;</td>
       </tr>
     </table>
@@ -110,12 +110,32 @@ td,tr,a,p{font-family: "Montserrat", sans-serif}
         <td style="width: 200px;"><strong>User</strong></td>
         <td style="width: 25px;"><strong>User Rating</strong></td>
       </tr>
+
+    <?php
+    $sql = "SELECT * FROM Kommentarer WHERE Kommentarer.ProduktNr='$productNr'";
+    $result = $conn->query($sql);
+    while($row = $result->fetch_assoc()) { ?>
       <tr>
-        <td style="width: 300px;">hej fin sten tack så mycket mina vänner</td>
-        <td style="width: 200px;">-rune 98</td>
-        <td style="width: 25px;">5/5*</td>
+        <td style="width: 300px;"><?php echo $row['Kommentar']?></td>
+        <td style="width: 200px;"><?php echo $row['Kundnr']?></td>
+        <td style="width: 25px;"><?php echo $row['UserRating']?>/5*</td>
+        <?php
+          if($_COOKIE["user"] == '0'){?>
+            <td> <button onclick="document.location='removeComment.php?knr=<?php echo $row['KommentarNr']?>&pnr=<?php echo $productNr?>'" style= "background-color:#cc0000"> REMOVE COMMENT</button></td>
+          <?php
+          }?>
       </tr>
+    <?php } ?>
     </table>
+<br>
+    <form method="post" action="/addComment.php?pnr=<?php echo $productNr ?>" >
+        <label for="fname">Comment:</label>
+        <input type="text" id="comment" name="comment"><br>
+        <label for="vol">Rating (between 1 and 5):</label>
+        <input type="range" id="rating" name="rating" min="1" max="5"><br>
+        <input type="submit" value="Submit Comment">
+    </form> 
+
 </div>
   <!-- End page content -->
 </div>

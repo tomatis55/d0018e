@@ -21,16 +21,17 @@
     $sql = "SELECT * FROM Produkt";
     $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    echo "id: " . $row["Pris"]. " - Name: " . $row["Productname"]. " " . $row["AvrRating"]. "<br>";
+    echo "id: " . $row["Pris"]. " - Name: " . $row["Produktnamn"]. " AvrRating: " . $row["AvrRating"]. "<br>";
     
-} else {
-  echo "fuck off";
-}
+
+    echo "2";
+
+    $sql = "SELECT * FROM Varukorg";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo $row['produktnr'];
     
-    ?>
-    <?php
     
     $conn->close();
   ?>
