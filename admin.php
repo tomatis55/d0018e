@@ -99,7 +99,19 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
         <button type="submit">Submit</button>
 
     </form> 
-    
+    </div>
+
+
+  <div class="w3-display-right" style ="margin-right:50px;margin-top:500px">
+  <h1> Change stock</h1>
+    <form action="/removeFromStock.php?id=admin?&target=admin.php" method="post" enctype="multipart/form-data">
+      <label for="name">Product id:</label><br>
+        <input type="text" name="pnr"><br>
+      <label for="name">Amount:</label><br>   
+      <input type="text" name="amount"><br>
+        <button type="submit">Submit</button>
+
+    </form> 
     </div>
 
     <!--WTF -->
