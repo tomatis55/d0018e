@@ -23,6 +23,8 @@ if (!$conn) {
     $username = $_POST['uname'];
     $password = $_POST['psw'];
 
+    $conn->autocommit(FALSE);
+
     $sql = "SELECT `Användarnamn` FROM `Kunder` WHERE Användarnamn='$username'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
@@ -31,11 +33,23 @@ if (!$conn) {
         echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
         
     }else{
-
+    
+    
     $sql = "UPDATE `Kunder` SET `Användarnamn`='$username',`Lösenord`='$password' WHERE `Kundnr`=$kundnr";
     $result = $conn->query($sql);
-    $message = "Successfully registered";
-    echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+    
+    if (!$conn->commit()){
+        $message = "Error, try again";
+        $conn->rollback();
+        echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+        $conn->close();
+        
+    }else{
+        $message = "Successfully registered";
+        $conn->close();
+        echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+    }
+    
 
     }
 
