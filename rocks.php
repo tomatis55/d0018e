@@ -89,6 +89,13 @@ if (!$conn) {
   <tH>Price</th>
   <tH>Stock</th>
   <th>Rating</th>
+  <?php
+    if($_COOKIE["user"] == '0'){?>
+      <th>Product Number</th>
+           
+
+  <?php
+  }?>
   <th>Picture</th>
 </tr>
 
@@ -104,20 +111,35 @@ if (!$conn) {
         <td> <a href="product.php?pnr=<?php echo $row['Produktnr']?>"> <?php echo $row["Produktnamn"]?> </a> </td>
         <td> <?php echo $row["Pris"]?> kr</td>
         <td> <?php echo $row["Antal"]?> </td>
+
         <td> <?php echo $row["AvrRating"]?>/5*</td>
+        <?php
+          if($_COOKIE["user"] == '0'){?>
+           
+           <td> <?php echo $row["Produktnr"]?></td>
+
+          <?php
+          }?>
+
         <td> <img src="<?php echo $row['imgurl']?>" style='width:200px;height:150px'> </td>
-        <td> <button onclick="document.location='addToCart.php?pnr=<?php echo $row['Produktnr']?>'"> Add to cart</button></td>
+        <?php
+        if ($row["Antal"] < 1){?>
+          <td> <button type="button" disabled>Add to cart</button></td>
+
+        <?php
+        }else{?>
+          <td> <button onclick="document.location='removeFromStock.php?pnr=<?php echo $row['Produktnr']?>&target=addToCart.php&amount=1'"> Add to cart</button></td>
+        <?php  
+        }
+        ?>
+
+        
 
         <!-- REMOVE PRODUCT BUTTON FOR ADMIN ONLY!!-->
         <?php
           if($_COOKIE["user"] == '0'){?>
            <td> <button  onclick="document.location='removeitem.php?pnr=<?php echo $row['Produktnr']?>'" style= "background-color:#cc0000"> REMOVE PRODUCT</button></td>
-            <!--
-              <form action="/removeitem.php?id=admin" method="post" enctype="multipart/form-data">
-                <input name="produktnr"><br>     
-                <button type="submit">Submit</button>
-          -->
-            
+           
 
           <?php
           }?>

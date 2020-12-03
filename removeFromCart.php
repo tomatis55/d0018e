@@ -28,6 +28,9 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
+$sql = "UPDATE `Produkt` SET Antal= Antal+1 WHERE Produktnr=$productnr";
+$conn->query($sql);
+
 // Close connection
 $conn->close();
 header("Location:/varukorg.php")
