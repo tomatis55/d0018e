@@ -112,12 +112,14 @@ td,tr,a,p{font-family: "Montserrat", sans-serif}
       </tr>
 
     <?php
-    $sql = "SELECT * FROM Kommentarer WHERE Kommentarer.ProduktNr='$productNr'";
+    $sql = "SELECT Kommentarer.* ,Kunder.Användarnamn 
+            FROM Kommentarer INNER JOIN Kunder ON Kommentarer.KundNr = Kunder.KundNr
+            WHERE Kommentarer.ProduktNr='$productNr'";
     $result = $conn->query($sql);
     while($row = $result->fetch_assoc()) { ?>
       <tr>
         <td style="width: 300px;"><?php echo $row['Kommentar']?></td>
-        <td style="width: 200px;"><?php echo $row['Kundnr']?></td>
+        <td style="width: 200px;"><?php echo $row['Användarnamn']?></td>
         <td style="width: 25px;"><?php echo $row['UserRating']?>/5*</td>
         <?php
           if($_COOKIE["user"] == '0'){?>
