@@ -42,7 +42,7 @@ if(!isset($_COOKIE['user'])){
     $result = $conn->query($sql);
         
     $conn->close();
-
+    header("Location:/index.php");
 }
 
 ?>

@@ -172,8 +172,9 @@ span.price {
 <div class="w3-main" style="margin-left:250px" >
 
   <!-- Top header -->
-  <header class="w3-container w3-xlarge">
-    <p class="w3-left">Varukorg</p>
+  <header class="w3-container ">
+
+    <p class="w3-left w3-xlarge">Basket</p>
     <p class="w3-right">
     <a href="varukorg.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
@@ -182,14 +183,16 @@ span.price {
     </p>
   </header>
 
+
+
 <table>
 <tr>
-  <tH>PRODUKTNAMN</th>
+  <tH>Product</th>
 
-  <tH>BESKRIVNING</th>
-  <tH>PRIS</th>
-  <th>BETYG</th>
-  <th>BILD</th>
+  <tH>Description</th>
+  <tH>Price</th>
+  <th>Rating</th>
+  <th>Picture</th>
 </tr>
 
 
