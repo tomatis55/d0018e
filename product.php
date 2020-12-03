@@ -80,7 +80,6 @@ td,tr,a,p{font-family: "Montserrat", sans-serif}
     <a href="varukorg.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
     </a>
-      <i class="fa fa-search"></i>
     </p>
   </header>
 

@@ -54,7 +54,6 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
      <a href="varukorg.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
     </a>
-      <i class="fa fa-search w3-xlarge"></i>
     </p>
 
   
