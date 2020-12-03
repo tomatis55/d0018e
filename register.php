@@ -18,6 +18,30 @@ if (!$conn) {
 <html>
 <body>
 
+<?php
+    $kundnr = $_COOKIE['user'];
+    $username = $_POST['uname'];
+    $password = $_POST['psw'];
+
+    $sql = "SELECT `Användarnamn` FROM `Kunder` WHERE Användarnamn='$username'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    if ($username == $row['Användarnamn']){
+        $message = "Username is taken";
+        echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+        
+    }else{
+
+    $sql = "UPDATE `Kunder` SET `Användarnamn`='$username',`Lösenord`='$password' WHERE `Kundnr`=$kundnr";
+    $result = $conn->query($sql);
+    $message = "Successfully registered";
+    echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+
+    }
+
+    
+
+?>
 
 
 
