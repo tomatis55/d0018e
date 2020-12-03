@@ -38,7 +38,7 @@ if(!isset($_COOKIE['user'])){
     $cookie_value = $x[Kundnr];
     setcookie($cookie_name, $cookie_value, time() + (86400*30), "/"); // 86400 = 1 day
 
-    $sql = "INSERT INTO `Kunder`() VALUES ()";
+    $sql = "INSERT INTO `Kunder`(`Användarnamn`, `Lösenord`) VALUES ($cookie_value+1, 1)";
     $result = $conn->query($sql);
         
     $conn->close();
@@ -99,14 +99,15 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
     </p>
   
   <div class="w3-margin-top">
- 	<form action="login.php" method="post">
+ 	<form method="post">
 		  <label for="uname"><b>Username</b></label>
     	<input type="text" placeholder="Enter Username" name="uname" required>
     	<label for="psw"><b>Password</b></label>
     	<input type="password" placeholder="Enter Password" name="psw" required>
-    	<button type="submit">Login</button>
-	</form> 
-   
+    	<button formaction="login.php" type="submit">Login</button>
+      <button formaction="register.php" type="submit">Register</button>
+	</form>
+  
   </header>
 
   <!-- Image header -->
