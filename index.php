@@ -99,6 +99,35 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
     </p>
   
   <div class="w3-margin-top">
+
+  <?php
+  $servername = "utbweb.its.ltu.se";
+  $username = "990815";
+  $password = "990815";
+  $dbname = "db990815";
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+ 
+  $sql = "SELECT * FROM Kunder WHERE Kundnr='$_COOKIE[user]'";
+  $result = $conn->query($sql);
+  $row = $result->fetch_assoc();
+
+  // if usernamn equals the usercookie the user is not logged in
+  if ($_COOKIE['user'] != $row['Användarnamn']) {
+  ?>
+
+		<label for="logout">inloggad som <?php echo $row['Användarnamn'];?></label>
+    <form action="/logout.php" method="post" name="logout" enctype="multipart/form-data">
+    <input type="submit" value="Logout">
+    
+  <?php
+  } else { 
+  ?>
+  <!-- log in/register form-->
  	<form method="post">
 		  <label for="uname"><b>Username</b></label>
     	<input type="text" placeholder="Enter Username" name="uname" required>
@@ -107,7 +136,7 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
     	<button formaction="login.php" type="submit">Login</button>
       <button formaction="register.php" type="submit">Register</button>
 	</form>
-  
+  <?php } ?>
   </header>
 
   <!-- Image header -->
