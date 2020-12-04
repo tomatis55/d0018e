@@ -132,7 +132,7 @@ if (!$conn) {
 
 
     <?php
-    $conn->close();
+    
 
   ?>
 </table>
@@ -140,6 +140,33 @@ if (!$conn) {
 </div>
 
 
+
+
+<?php 
+
+
+
+$adress = $_POST['address'];
+$postnr = $_POST['zip'];
+$ort = $_POST['city'];
+$email = $_POST['email'];
+$name = $_POST['firstname'];
+$sql ="INSERT INTO `Beställning`(`KundNr`, `Summa`, `Adress`, `Postnr`, `Postort`, `Email`, `Namn`) VALUES ('$k', '$sum', '$adress', '$postnr', '$ort', '$email', '$name')";
+$conn->query($sql);
+
+$sql = "SELECT Ordernr FROM Beställning ORDER BY Ordernr DESC LIMIT 1";
+$result = $conn->query($sql);
+$x = $result->fetch_assoc();
+
+$sql = "SELECT * FROM Varukorg,Produkt WHERE Varukorg.Kundnr=$k AND Varukorg.Produktnr=Produkt.Produktnr ";
+$result = $conn->query($sql);
+while($row = $result->fetch_assoc()) {
+  $sql = "INSERT INTO `Beställningar`(`OrderNr`, `ProduktNr`) VALUES ($x[Ordernr],$row[Produktnr])";
+  $conn->query($sql);
+}
+
+$conn->close();
+?>
 
 
 </body>
