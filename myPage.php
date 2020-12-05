@@ -16,36 +16,6 @@ if($_COOKIE["user"] == '0'){?>
 <?php
 }
 ?>
-<?php
-if(!isset($_COOKIE['user'])){
-    $servername = "utbweb.its.ltu.se";
-    $username = "990815";
-    $password = "990815";
-    $dbname = "db990815";
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    $sql = "SELECT * FROM Kunder ORDER BY Kundnr DESC LIMIT 1";
-    $result = $conn->query($sql);
-    $x = $result->fetch_assoc();
-
-
-    $cookie_name = "user";
-    $cookie_value = $x[Kundnr];
-    setcookie($cookie_name, $cookie_value, time() + (86400*30), "/"); // 86400 = 1 day
-
-    $sql = "INSERT INTO `Kunder`(`Användarnamn`, `Lösenord`) VALUES ($cookie_value+1, 1)";
-    $result = $conn->query($sql);
-        
-    $conn->close();
-    header("Location:/index.php");
-}
-
-?>
 
 <html>
 <title>ROCKS&GUNS</title>
@@ -115,49 +85,53 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
   $result = $conn->query($sql);
   $row = $result->fetch_assoc();
 
-  // if usernamn equals the usercookie the user is not logged in
-  if ($_COOKIE['user'] != $row['Användarnamn']) {
-  ?>
-
-		<label for="logout">inloggad som <?php echo $row['Användarnamn'];?></label>
+if ($_COOKIE['user'] != $row['Användarnamn']) { ?>   
+    <label for="logout">inloggad som <?php echo $row['Användarnamn'];?></label>
     <form action="/logout.php" method="post" name="logout" enctype="multipart/form-data">
     <input type="submit" value="Logout">
-    </form>
-
-    <form action="/myPage.php" method="post" name="My Page" enctype="multipart/form-data">
-    <input type="submit" value="My Page">
-    </form>
-
-    
-  <?php
-  } else { 
-  ?>
-  <!-- log in/register form-->
- 	<form method="post">
-		  <label for="uname"><b>Username</b></label>
-    	<input type="text" placeholder="Enter Username" name="uname" required>
-    	<label for="psw"><b>Password</b></label>
-    	<input type="password" placeholder="Enter Password" name="psw" required>
-    	<button formaction="login.php" type="submit">Login</button>
-      <button formaction="register.php" type="submit">Register</button>
-	</form>
-  <?php } ?>
-  </header>
-
-  <!-- Image header -->
-  <div class="w3-display-container w3-container">
-    <img src="https://www.w3schools.com/w3images/jeans.jpg" alt="Picture" style="width:100%">
-    <div class="w3-display-topleft " style="padding:30px 48px">
-      <h1 class="w3-hide-small">Welcome to Rocks & Guns</h1>
-      <h1 class="w3-hide-large w3-hide-medium"></h1>
-      <h1 class="w3-hide-small"></h1>
-    </div>
-  </div>
+<?php
+} else {?>
+    <p> viewing as visitor</p>
+<?php
+}
+?>
 
 </div>
+  <h1> Orderhistorik </h1>
+<table>
+<tr>
+  <tH>OrderNr</th>
+  <tH>Sum</th>
+  <tH>Products</th>
+ </tr>
 
 
-  <!-- End page content -->
+
+  <?php
+    $sql = "SELECT * FROM Beställning WHERE KundNr='$_COOKIE[user]'";
+    $result = $conn->query($sql);
+    while($row = $result->fetch_assoc()) { 
+        $orderNr = $row['OrderNr'];
+        //$sql2 = "SELECT * FROM Beställningar WHERE OrderNr='$orderNr'";
+        $sql2 = "SELECT Beställningar.ProduktNr ,Produkt.Produktnamn
+                 FROM Beställningar INNER JOIN Produkt ON Produkt.ProduktNr = Beställningar.ProduktNr
+                 WHERE OrderNr='$orderNr'";
+        $result2 = $conn->query($sql2);
+        ?>
+        <tr>  
+            <td> <?php echo $row["OrderNr"]?> </td>
+            <td> <?php echo $row["Summa"]?> </td>
+            <td> 
+            <?php 
+            while($innerRow = $result2->fetch_assoc()) { ?> 
+                <a href="product.php?pnr=<?php echo $innerRow['ProduktNr']?>"> <?php echo $innerRow['Produktnamn']?> </a>,
+            <?php 
+            } ?>
+            </td>    
+    <?php 
+    } ?>
+    </tr>
+    </table>
 </div>
 
 </body>
