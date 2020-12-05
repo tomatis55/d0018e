@@ -26,6 +26,7 @@ if($_COOKIE["user"] == '0'){?>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+table { border-collapse: collapse; }
 
 .w3-sidebar a{ font-family: "Roboto"}
 h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
@@ -97,6 +98,8 @@ if ($_COOKIE['user'] != $row['Användarnamn']) { ?>
 ?>
 
 </div>
+
+
   <h1> Order history </h1>
 <table>
 <tr>
@@ -118,21 +121,27 @@ if ($_COOKIE['user'] != $row['Användarnamn']) { ?>
                  WHERE OrderNr='$orderNr'";
         $result2 = $conn->query($sql2);
         ?>
-        <tr>  
+        <tr style="border:3px solid black; text-align:center">  
             <td> <?php echo $row["OrderNr"]?> </td>
             <td> <?php echo $row["Summa"]?> kr </td>
             <td> 
+            <table>
             <?php 
-            while($innerRow = $result2->fetch_assoc()) { ?> 
-                <a href="product.php?pnr=<?php echo $innerRow['ProduktNr']?>"> <?php echo $innerRow['Produktnamn']?> </a>
-            <?php 
-            } ?>
+              while($innerRow = $result2->fetch_assoc()) { ?> 
+              <tr>
+              <td>   <a href="product.php?pnr=<?php echo $innerRow['ProduktNr']?>"> <?php echo $innerRow['Produktnamn']?> </a> </td>
+              </tr>
+              <?php 
+              } ?>
+            </table>
+            
+           
             </td>    
     <?php 
     } ?>
     </tr>
     </table>
-</div>
+
 <?php 
     $conn->close(); 
 ?>
