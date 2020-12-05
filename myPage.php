@@ -86,7 +86,7 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
   $row = $result->fetch_assoc();
 
 if ($_COOKIE['user'] != $row['Användarnamn']) { ?>   
-    <label for="logout">inloggad som <?php echo $row['Användarnamn'];?></label>
+    <label for="logout">Logged in as <?php echo $row['Användarnamn'];?></label>
     <form action="/logout.php" method="post" name="logout" enctype="multipart/form-data">
     <input type="submit" value="Logout">
 <?php
@@ -97,7 +97,7 @@ if ($_COOKIE['user'] != $row['Användarnamn']) { ?>
 ?>
 
 </div>
-  <h1> Orderhistorik </h1>
+  <h1> Order history </h1>
 <table>
 <tr>
   <tH>OrderNr</th>
@@ -120,11 +120,11 @@ if ($_COOKIE['user'] != $row['Användarnamn']) { ?>
         ?>
         <tr>  
             <td> <?php echo $row["OrderNr"]?> </td>
-            <td> <?php echo $row["Summa"]?> </td>
+            <td> <?php echo $row["Summa"]?> kr </td>
             <td> 
             <?php 
             while($innerRow = $result2->fetch_assoc()) { ?> 
-                <a href="product.php?pnr=<?php echo $innerRow['ProduktNr']?>"> <?php echo $innerRow['Produktnamn']?> </a>,
+                <a href="product.php?pnr=<?php echo $innerRow['ProduktNr']?>"> <?php echo $innerRow['Produktnamn']?> </a>
             <?php 
             } ?>
             </td>    

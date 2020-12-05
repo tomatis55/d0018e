@@ -119,7 +119,7 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
   if ($_COOKIE['user'] != $row['Användarnamn']) {
   ?>
 
-		<label for="logout">inloggad som <?php echo $row['Användarnamn'];?></label>
+		<label for="logout">Logged in as <?php echo $row['Användarnamn'];?></label>
     <form action="/logout.php" method="post" name="logout" enctype="multipart/form-data">
     <input type="submit" value="Logout">
     </form>
