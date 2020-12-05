@@ -165,6 +165,11 @@ while($row = $result->fetch_assoc()) {
   $conn->query($sql);
 }
 
+// empty shopping basket
+
+$sql = "DELETE FROM `Varukorg` WHERE kundnr= $k";
+$conn->query($sql);
+
 $conn->close();
 ?>
 

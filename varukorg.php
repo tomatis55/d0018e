@@ -246,7 +246,7 @@ span.price {
 <div class="row">
   <div style="margin-left:300px;margin-top:200px; "class="col-75">
     <div class="container">
-      <form action="/checkout.php">
+      <form action="/checkout.php" method="post">
       
         <div class="row">
           <div class="col-50">
