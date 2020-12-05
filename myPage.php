@@ -133,6 +133,8 @@ if ($_COOKIE['user'] != $row['Användarnamn']) { ?>
     </tr>
     </table>
 </div>
-
+<?php 
+    $conn->close(); 
+?>
 </body>
 </html>
