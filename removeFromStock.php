@@ -27,6 +27,8 @@ if($_COOKIE["user"] == '0'){
     $amount = $_GET['amount'];
 }
 
+$conn->autocommit(FALSE);
+
 $sql ="SELECT `Antal` FROM `Produkt` WHERE Produktnr=$produktnr";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
@@ -40,6 +42,12 @@ if($amount > $row['Antal']){
 }
 
 
+if (!$conn->commit()){
+    $message = "Error, try again";
+    $conn->rollback();
+    $conn->close();
+    echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+}
 
 
 
