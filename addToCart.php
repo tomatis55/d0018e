@@ -21,15 +21,18 @@
 
 $user = $_COOKIE['user'];
 $productnr = $_GET['pnr'];
-$sql = "INSERT INTO Varukorg (kundnr, produktnr) VALUES ('$user', '$productnr')";
 
+$sql = "SELECT Antal FROM Produkt WHERE ProduktNr = $productnr";
+$result = $conn->query($sql);
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+if ($result['Antal']>0) {
+  $sql = "INSERT INTO Varukorg (kundnr, produktnr) VALUES ('$user', '$productnr')";
+  if ($conn->query($sql) === TRUE) {
+      echo "New record created successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
   }
-
+}
 // Close connection
 $conn->close();
 header("Location:/varukorg.php")
