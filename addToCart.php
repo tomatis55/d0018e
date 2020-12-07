@@ -22,15 +22,17 @@
 $user = $_COOKIE['user'];
 $productnr = $_GET['pnr'];
 
-$sql = "SELECT Antal FROM Produkt WHERE ProduktNr = $productnr";
-$result = $conn->query($sql);
 
-if ($result['Antal']>0) {
+$sql = "SELECT Antal FROM Produkt WHERE Produktnr='$productnr'";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+
+if ($row['Antal'] >= 0) {
   $sql = "INSERT INTO Varukorg (kundnr, produktnr) VALUES ('$user', '$productnr')";
   if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
-    } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "New record created successfully";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
   }
 }
 // Close connection

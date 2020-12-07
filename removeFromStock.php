@@ -32,6 +32,11 @@ $conn->autocommit(FALSE);
 $sql ="SELECT `Antal` FROM `Produkt` WHERE Produktnr=$produktnr";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
+
+if ($row['Antal'] == 0 && $target == "addToCart.php") {
+    $target = "varukorg.php";
+}
+
 if($amount > $row['Antal']){
     $sql ="UPDATE `Produkt` SET Antal=0 WHERE Produktnr=$produktnr";
     $result = $conn->query($sql);
@@ -40,6 +45,7 @@ if($amount > $row['Antal']){
     $sql ="UPDATE `Produkt` SET Antal= Antal-$amount WHERE Produktnr=$produktnr";
     $result = $conn->query($sql);
 }
+
 
 
 if (!$conn->commit()){
