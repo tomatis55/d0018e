@@ -34,10 +34,7 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
 if ($row['Antal'] == 0 && $target == "addToCart.php") {
-    $message = "Uh Oh, the product has run out D:";
     $target = "varukorg.php";
-    echo "<script type='text/javascript'>alert('$message');</script>";
-
 }
 
 if($amount > $row['Antal']){

@@ -197,6 +197,11 @@ span.price {
 
   <!-- Product grid -->
   <?php
+  if($_GET['pnr']){
+    $message = "Uh Oh, the product has run out D:";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+  }
+
     $k = $_COOKIE['user'];
     $sql = "SELECT * FROM Varukorg,Produkt WHERE Varukorg.Kundnr=$k AND Varukorg.Produktnr=Produkt.Produktnr ";
     $result = $conn->query($sql);
