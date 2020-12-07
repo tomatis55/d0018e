@@ -56,7 +56,7 @@ if (!$conn) {
     </h3>
   </div>
   <div class="w3-padding-64 w3-large" style="background-color:peru">
-    <a href="rocks.php" target="_blank" class="w3-bar-item w3-button">Rocks</a>
+    <a href="rocks.php" target="_self" class="w3-bar-item w3-button">Rocks</a>
     <a href="guns.php" target="_self" class="w3-bar-item w3-button">Guns</a>
     <?php
       if ($_COOKIE['user'] == '0'){?>
