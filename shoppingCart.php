@@ -176,7 +176,7 @@ span.price {
 
     <p class="w3-left w3-xlarge">Basket</p>
     <p class="w3-right">
-    <a href="varukorg.php">
+    <a href="shoppingCart.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
     </a>
     </p>

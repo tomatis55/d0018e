@@ -21,24 +21,14 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
 if ($_POST[uname] == $row['Användarnamn'] and $_POST[psw]==$row['Lösenord']){
-  echo "välkommen";
   echo $row['Kundnr'];
 
   $cookie_value = $row['Kundnr'];
   setcookie("user", $cookie_value, time() + (86400), "/"); // 86400 = 1 day
+} 
 
-  echo $_COOKIE['user'];
+header("Location:/index.php");
 
-
-  if ($_COOKIE['user'] = 0) {
-    header("Location:/admin.php");
-  } else {
-    header("Location:/index.php");
-  }
-
-} else {
-  header("Location:/index.php");
-}
 
 ?>
 </body>

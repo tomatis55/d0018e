@@ -51,7 +51,7 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
   <header class="w3-container w3-xlarge">
   <p class="w3-left">Admin</p>
    <p class="w3-right">
-     <a href="varukorg.php">
+     <a href="shoppingCart.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
     </a>
     </p>
@@ -103,7 +103,7 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
 
   <div class="w3-display-right" style ="margin-right:50px;margin-top:500px">
   <h1> Change stock</h1>
-    <form action="/removeFromStock.php?id=admin?&target=admin.php" method="post" enctype="multipart/form-data">
+    <form action="/changeStock.php?id=admin?&target=admin.php" method="post" enctype="multipart/form-data">
       <label for="name">Product id:</label><br>
         <input type="text" name="pnr"><br>
       <label for="name">Amount:</label><br>   

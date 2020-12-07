@@ -37,5 +37,5 @@ if ($row['Antal'] >= 0) {
 }
 // Close connection
 $conn->close();
-header("Location:/varukorg.php")
+header("Location:/shoppingCart.php")
 ?>

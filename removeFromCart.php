@@ -19,19 +19,25 @@
     
 $user = $_COOKIE['user'];
 $productnr = $_GET['pnr'];
+$sql = "SELECT * FROM `Varukorg` WHERE kundnr= $user AND Produktnr = $productnr LIMIT 1";
+$result = $conn->query($sql);
 
-$sql = "DELETE FROM `Varukorg` WHERE kundnr= $user AND Produktnr = $productnr LIMIT 1";
+if ($result->num_rows != 0) {
 
-if ($conn->query($sql) === TRUE) {
-    echo "Record removed successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+  $sql = "DELETE FROM `Varukorg` WHERE kundnr= $user AND Produktnr = $productnr LIMIT 1";
 
-$sql = "UPDATE `Produkt` SET Antal= Antal+1 WHERE Produktnr=$productnr";
-$conn->query($sql);
+  if ($conn->query($sql) === TRUE) {
+      echo "Record removed successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+
+  $sql = "UPDATE `Produkt` SET Antal= Antal+1 WHERE Produktnr=$productnr";
+  $conn->query($sql);
+}
 
 // Close connection
 $conn->close();
-header("Location:/varukorg.php")
+header("Location:/shoppingCart.php")
 ?>

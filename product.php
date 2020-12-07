@@ -77,7 +77,7 @@ td,tr,a,p{font-family: "Montserrat", sans-serif}
   <header class="w3-container w3-xlarge">
     <p class="w3-left"></p>
     <p class="w3-right">
-    <a href="varukorg.php">
+    <a href="shoppingCart.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
     </a>
     </p>

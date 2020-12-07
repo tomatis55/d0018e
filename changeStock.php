@@ -34,7 +34,7 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
 if ($row['Antal'] == 0 && $target == "addToCart.php") {
-    $target = "varukorg.php";
+    $target = "shoppingCart.php";
 }
 
 if($amount > $row['Antal']){

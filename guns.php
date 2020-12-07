@@ -76,7 +76,7 @@ if (!$conn) {
   <header class="w3-container w3-xlarge">
     <p class="w3-left">Guns</p>
     <p class="w3-right">
-    <a href="varukorg.php">
+    <a href="shoppingCart.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
     </a>
     </p>
@@ -127,7 +127,7 @@ if (!$conn) {
 
         <?php
         }else{?>
-          <td> <button onclick="document.location='removeFromStock.php?pnr=<?php echo $row['Produktnr']?>&target=addToCart.php&amount=1'"> Add to cart</button></td>
+          <td> <button onclick="document.location='changeStock.php?pnr=<?php echo $row['Produktnr']?>&target=addToCart.php&amount=1'"> Add to cart</button></td>
         <?php  
         }
         ?>

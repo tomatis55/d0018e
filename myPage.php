@@ -63,7 +63,7 @@ h1,h2,h3,h4,h5,h6,.w3-container{font-family: "Montserrat", sans-serif}
   <!-- Top header -->
   <header class="w3-container">
    <p class="w3-right">
-     <a href="varukorg.php">
+     <a href="shoppingCart.php">
       <i class="fa fa-shopping-cart w3-margin-right w3-xlarge"></i>
     </a>
     </p>
