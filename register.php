@@ -41,9 +41,8 @@ if (!$conn) {
     if (!$conn->commit()){
         $message = "Error, try again";
         $conn->rollback();
-        echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
         $conn->close();
-        
+        echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
     }else{
         $message = "Successfully registered";
         $conn->close();
