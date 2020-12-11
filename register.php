@@ -23,11 +23,12 @@ if (!$conn) {
     $username = $_POST['uname'];
     $password = $_POST['psw'];
 
-    $conn->autocommit(FALSE);
-
+    
+    $conn->query("START TRANSACTION");
+    
     $sql = "SELECT `Användarnamn` FROM `Kunder` WHERE Användarnamn='$username'";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
+    $result1 = $conn->query($sql);
+    $row = $result1->fetch_assoc();
     if ($username == $row['Användarnamn']){
         $message = "Username is taken";
         echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
@@ -36,15 +37,17 @@ if (!$conn) {
     
     
     $sql = "UPDATE `Kunder` SET `Användarnamn`='$username',`Lösenord`='$password' WHERE `Kundnr`=$kundnr";
-    $result = $conn->query($sql);
+    $result2 = $conn->query($sql);
     
-    if (!$conn->commit()){
+    
+    if (!($result1 && $result2)){
         $message = "Error, try again";
-        $conn->rollback();
+        $conn->query("ROLLBACK");
         $conn->close();
         echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
     }else{
         $message = "Successfully registered";
+        $conn->query("COMMIT");
         $conn->close();
         echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
     }
