@@ -27,11 +27,13 @@ if($_COOKIE["user"] == '0'){
     $amount = $_GET['amount'];
 }
 
-$conn->autocommit(FALSE);
+$conn->query("START TRANSACTION");
 
 $sql ="SELECT `Antal` FROM `Produkt` WHERE Produktnr=$produktnr";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
+$result1 = $conn->query($sql);
+$row = $result1->fetch_assoc();
+
+echo "test1<br>";
 
 if ($row['Antal'] == 0 && $target == "addToCart.php") {
     $target = "shoppingCart.php";
@@ -39,25 +41,29 @@ if ($row['Antal'] == 0 && $target == "addToCart.php") {
 
 if($amount > $row['Antal']){
     $sql ="UPDATE `Produkt` SET Antal=0 WHERE Produktnr=$produktnr";
-    $result = $conn->query($sql);
+    $result2 = $conn->query($sql);
+    echo "test2<br>";
 
 }else{
     $sql ="UPDATE `Produkt` SET Antal= Antal-$amount WHERE Produktnr=$produktnr";
-    $result = $conn->query($sql);
+    $result3 = $conn->query($sql);
+    echo "test3<br>";
 }
 
 
 
-if (!$conn->commit()){
+if (($result1 && $result2 && !$result3) || ($result1 && !$result2 && $result3)){
+    echo "Commit";
+    $conn->query("COMMIT");
+    $conn->close();
+} else {
+    echo "error";
     $message = "Error, try again";
-    $conn->rollback();
+    $conn->query("ROLLBACK");
     $conn->close();
     echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
 }
 
-
-
-$conn->close();
 
 
 if ($_COOKIE["user"] == '0'){
@@ -69,7 +75,6 @@ if ($_COOKIE["user"] == '0'){
 }else{
     header("Location:/$target?&pnr=$produktnr");
 }
-
 
 
 
