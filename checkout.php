@@ -157,10 +157,6 @@ $sql ="INSERT INTO `Beställning`(`KundNr`, `Summa`, `Adress`, `Postnr`, `Postor
 echo "<script type='text/javascript'>alert('$sql');location.replace('index.php');</script>";
 $result3 = $conn->query($sql);
 
-if(!$result3){
-  echo "<script type='text/javascript'>alert('$sql');location.replace('index.php');</script>";
-  
-}
 
 $sql = "SELECT Ordernr FROM Beställning ORDER BY Ordernr DESC LIMIT 1";
 $result4 = $conn->query($sql);
@@ -182,37 +178,6 @@ while($row = $result5->fetch_assoc()) {
 
 $sql = "DELETE FROM `Varukorg` WHERE kundnr= $k";
 $result7 = $conn->query($sql);
-
-if(!$result1){
-  $message = "result1";
-  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
-}
-if(!$result2){
-  $message = "result2";
-  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
-}
-if(!$result3){
-  $message = "result3";
-  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
-}
-
-if(!$result4){
-  $message = "result4";
-  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
-}
-if(!$result5){
-  $message = "result5";
-  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
-}
-if(!$result6){
-  $message = "result6";
-  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
-}
-if(!$result7){
-  $message = "result7";
-  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
-}
-
 
 if ($result1 && $result2 && $result3 && $result4 && $result5 && $result6 && $result7){
   echo "Commit";
