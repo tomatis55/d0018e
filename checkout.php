@@ -93,10 +93,12 @@ if (!$conn) {
 
   <!-- Product grid -->
   <?php
+    $conn->query("START TRANSACTION");
+
     $k = $_COOKIE['user'];
     $sql = "SELECT * FROM Varukorg,Produkt WHERE Varukorg.Kundnr=$k AND Varukorg.Produktnr=Produkt.Produktnr ";
-    $result = $conn->query($sql);
-    while($row = $result->fetch_assoc()) { ?>
+    $result1 = $conn->query($sql);
+    while($row = $result1->fetch_assoc()) { ?>
     
       <tr>
         <td> <?php echo $row["Produktnamn"]?> </td>
@@ -116,8 +118,8 @@ if (!$conn) {
 <!-- räkna ut summa och antal-->
 <?php
       $sql = "SELECT SUM(Produkt.Pris) as Summa, COUNT(*) as Antal FROM Varukorg, Produkt WHERE Varukorg.Kundnr = '$k' AND Varukorg.Produktnr = Produkt.Produktnr";
-      $result = $conn->query($sql);
-      $row = $result->fetch_assoc();
+      $result2 = $conn->query($sql);
+      $row = $result2->fetch_assoc();
       $sum = $row['Summa'];
       $count = $row['Antal']
     ?>
@@ -152,25 +154,78 @@ $ort = $_POST['city'];
 $email = $_POST['email'];
 $name = $_POST['firstname'];
 $sql ="INSERT INTO `Beställning`(`KundNr`, `Summa`, `Adress`, `Postnr`, `Postort`, `Email`, `Namn`) VALUES ('$k', '$sum', '$adress', '$postnr', '$ort', '$email', '$name')";
-$conn->query($sql);
+echo "<script type='text/javascript'>alert('$sql');location.replace('index.php');</script>";
+$result3 = $conn->query($sql);
+
+if(!$result3){
+  echo "<script type='text/javascript'>alert('$sql');location.replace('index.php');</script>";
+  
+}
 
 $sql = "SELECT Ordernr FROM Beställning ORDER BY Ordernr DESC LIMIT 1";
-$result = $conn->query($sql);
-$x = $result->fetch_assoc();
+$result4 = $conn->query($sql);
+$x = $result4->fetch_assoc();
 
 $sql = "SELECT * FROM Varukorg,Produkt WHERE Varukorg.Kundnr=$k AND Varukorg.Produktnr=Produkt.Produktnr ";
-$result = $conn->query($sql);
-while($row = $result->fetch_assoc()) {
-  $sql = "INSERT INTO `Beställningar`(`OrderNr`, `ProduktNr`) VALUES ($x[Ordernr],$row[Produktnr])";
-  $conn->query($sql);
+
+$result5 = $conn->query($sql);
+
+$result6 = TRUE;
+while($row = $result5->fetch_assoc()) {
+  if($result6){
+    $sql = "INSERT INTO `Beställningar`(`OrderNr`, `ProduktNr`) VALUES ($x[Ordernr],$row[Produktnr])";
+    $result6 = $conn->query($sql);
+  }
 }
 
 // empty shopping basket
 
 $sql = "DELETE FROM `Varukorg` WHERE kundnr= $k";
-$conn->query($sql);
+$result7 = $conn->query($sql);
 
-$conn->close();
+if(!$result1){
+  $message = "result1";
+  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+}
+if(!$result2){
+  $message = "result2";
+  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+}
+if(!$result3){
+  $message = "result3";
+  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+}
+
+if(!$result4){
+  $message = "result4";
+  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+}
+if(!$result5){
+  $message = "result5";
+  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+}
+if(!$result6){
+  $message = "result6";
+  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+}
+if(!$result7){
+  $message = "result7";
+  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+}
+
+
+if ($result1 && $result2 && $result3 && $result4 && $result5 && $result6 && $result7){
+  echo "Commit";
+  $conn->query("COMMIT");
+  $conn->close();
+} else {
+  echo "error";
+  $message = "Error, try again";
+  $conn->query("ROLLBACK");
+  $conn->close();
+  echo "<script type='text/javascript'>alert('$message');location.replace('index.php');</script>";
+}
+
 ?>
 
 
